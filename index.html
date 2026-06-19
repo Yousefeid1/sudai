@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>معدات تكسير وترحيل مخالفات بالسعودية | اتصال فوري</title>
+<meta name="description" content="تأجير وبيع معدات تكسير وهدم + ترحيل وإزالة مخالفات البناء بالرياض وجميع مناطق السعودية. خدمة سريعة، فريق معتمد، اتصل الآن.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --asphalt:#15140f;
+    --asphalt-2:#1f1d16;
+    --concrete:#e9e3d3;
+    --concrete-2:#d8d0ba;
+    --rust:#d4541f;
+    --rust-2:#ef6a2e;
+    --steel:#2f4858;
+    --steel-2:#3e5d70;
+    --ok:#7a8c3a;
+    --text-dark:#1a1812;
+    --text-light:#f3efe3;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Tajawal',sans-serif;
+    background:var(--concrete);
+    color:var(--text-dark);
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Almarai',sans-serif;
+    font-weight:800;
+    letter-spacing:-0.01em;
+  }
+  a{text-decoration:none;color:inherit;}
+  img,svg{display:block;}
+
+  /* ===== Texture ===== */
+  .grain{
+    position:fixed; inset:0; pointer-events:none; opacity:0.05; z-index:999;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ===== Sticky bar ===== */
+  .stickybar{
+    position:fixed; bottom:0; right:0; left:0; z-index:500;
+    background:var(--asphalt);
+    border-top:3px solid var(--rust);
+    display:flex; gap:10px; padding:10px 14px;
+  }
+  .stickybar a{
+    flex:1; text-align:center; padding:13px 8px; border-radius:6px;
+    font-family:'Almarai',sans-serif; font-weight:700; font-size:15px;
+  }
+  .sb-call{background:var(--rust); color:#fff;}
+  .sb-wa{background:#2c6e3f; color:#fff;}
+
+  /* ===== Top bar ===== */
+  .topbar{
+    background:var(--asphalt); color:var(--text-light);
+    display:flex; justify-content:space-between; align-items:center;
+    padding:10px 20px; font-size:13px;
+  }
+  .topbar .phone{color:var(--rust-2); font-weight:700; font-family:'Almarai',sans-serif;}
+
+  /* ===== Hero ===== */
+  .hero{
+    position:relative;
+    background:var(--asphalt);
+    color:var(--text-light);
+    padding:54px 20px 90px;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      repeating-linear-gradient(135deg, transparent 0 38px, rgba(212,84,31,0.06) 38px 40px);
+  }
+  .hero-inner{position:relative; z-index:2; max-width:880px; margin:0 auto; text-align:center;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    background:rgba(212,84,31,0.15); color:var(--rust-2);
+    border:1px solid var(--rust); border-radius:30px;
+    padding:6px 16px; font-size:13px; font-weight:700;
+    margin-bottom:22px;
+  }
+  .hero h1{
+    font-size:clamp(28px,6vw,46px);
+    line-height:1.25;
+    margin-bottom:16px;
+  }
+  .hero h1 span{color:var(--rust-2);}
+  .hero p.sub{
+    font-size:clamp(15px,2.4vw,19px);
+    color:#c9c4b4; max-width:620px; margin:0 auto 30px; line-height:1.8;
+  }
+  .hero-ctas{display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-bottom:34px;}
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:16px 30px; border-radius:8px;
+    font-family:'Almarai',sans-serif; font-weight:700; font-size:16px;
+    transition:transform .15s ease;
+  }
+  .btn:active{transform:scale(0.97);}
+  .btn-primary{background:var(--rust); color:#fff; box-shadow:0 8px 22px rgba(212,84,31,0.35);}
+  .btn-outline{border:2px solid #4a4636; color:var(--text-light);}
+  .trust-row{
+    display:flex; gap:26px; justify-content:center; flex-wrap:wrap;
+    color:#a9a392; font-size:13px;
+  }
+  .trust-row b{color:var(--text-light); display:block; font-family:'Almarai',sans-serif; font-size:20px;}
+
+  /* crack divider */
+  .crack-divider{
+    display:block; width:100%; height:46px;
+    background:var(--concrete);
+  }
+
+  /* ===== Section shared ===== */
+  .section{padding:64px 20px;}
+  .section-head{max-width:720px; margin:0 auto 40px; text-align:center;}
+  .section-head .tag{
+    color:var(--rust); font-weight:700; font-size:13px;
+    letter-spacing:0.5px; display:block; margin-bottom:10px;
+  }
+  .section-head h2{font-size:clamp(24px,4vw,34px); color:var(--text-dark); line-height:1.3;}
+  .section-head p{margin-top:12px; color:#5c5648; font-size:15px; line-height:1.8;}
+
+  /* ===== Service cards (equipment) ===== */
+  .grid{
+    max-width:1080px; margin:0 auto;
+    display:grid; grid-template-columns:repeat(3,1fr); gap:18px;
+  }
+  @media (max-width:880px){.grid{grid-template-columns:1fr 1fr;}}
+  @media (max-width:560px){.grid{grid-template-columns:1fr;}}
+  .card{
+    background:#fff; border:1px solid #ddd5bc; border-radius:10px;
+    padding:26px 22px; position:relative; overflow:hidden;
+  }
+  .card .num{
+    font-family:'Almarai',sans-serif; font-weight:800; font-size:34px;
+    color:var(--concrete-2); -webkit-text-stroke:1px #cfc6ab;
+    position:absolute; top:8px; left:16px; opacity:0.6;
+  }
+  .card h3{font-size:18px; margin-bottom:8px; color:var(--text-dark); position:relative; z-index:2;}
+  .card p{font-size:14px; color:#675f4f; line-height:1.8; position:relative; z-index:2;}
+  .card .accent{
+    width:38px; height:4px; background:var(--rust); border-radius:4px; margin-bottom:14px;
+  }
+
+  /* ===== Violation section (dark, stamp motif) ===== */
+  .violations{background:var(--steel); color:var(--text-light);}
+  .violations .section-head h2{color:#fff;}
+  .violations .section-head .tag{color:#ffb088;}
+  .violations .section-head p{color:#cbd6dc;}
+  .vio-grid{
+    max-width:980px; margin:0 auto; display:grid;
+    grid-template-columns:1.1fr 1fr; gap:34px; align-items:center;
+  }
+  @media (max-width:780px){.vio-grid{grid-template-columns:1fr;}}
+  .vio-list{list-style:none;}
+  .vio-list li{
+    display:flex; gap:12px; align-items:flex-start;
+    padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.12);
+    font-size:15px; line-height:1.7;
+  }
+  .vio-list li:last-child{border-bottom:none;}
+  .check{
+    flex:0 0 26px; width:26px; height:26px; border-radius:50%;
+    background:var(--rust); color:#fff; display:flex; align-items:center; justify-content:center;
+    font-size:14px; font-weight:700;
+  }
+  .stamp-wrap{display:flex; justify-content:center;}
+  .stamp{
+    width:230px; height:230px; border:6px solid var(--rust-2); border-radius:50%;
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    transform:rotate(-9deg); color:var(--rust-2);
+    font-family:'Almarai',sans-serif; font-weight:800;
+    position:relative;
+  }
+  .stamp::before, .stamp::after{
+    content:""; position:absolute; inset:14px; border:2px dashed rgba(239,106,46,0.5); border-radius:50%;
+  }
+  .stamp span{font-size:22px; line-height:1.5;}
+
+  /* ===== Process ===== */
+  .steps{
+    max-width:960px; margin:0 auto; display:grid;
+    grid-template-columns:repeat(4,1fr); gap:0;
+    position:relative;
+  }
+  @media (max-width:780px){.steps{grid-template-columns:1fr; gap:24px;}}
+  .step{text-align:center; padding:0 14px; position:relative;}
+  .step .circle{
+    width:58px; height:58px; border-radius:50%;
+    background:var(--asphalt); color:var(--rust-2);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Almarai',sans-serif; font-weight:800; font-size:20px;
+    margin:0 auto 14px;
+  }
+  .step h4{font-size:15px; margin-bottom:6px;}
+  .step p{font-size:13px; color:#6b644f; line-height:1.7;}
+  .steps::before{
+    content:""; position:absolute; top:29px; right:12%; left:12%; height:2px;
+    background:repeating-linear-gradient(90deg, #cfc6ab 0 8px, transparent 8px 16px);
+    z-index:0;
+  }
+  @media (max-width:780px){.steps::before{display:none;}}
+
+  /* ===== Coverage ===== */
+  .coverage{background:var(--asphalt-2); color:var(--text-light); text-align:center;}
+  .coverage .section-head h2{color:#fff;}
+  .coverage .section-head .tag{color:var(--rust-2);}
+  .cities{
+    display:flex; gap:10px; flex-wrap:wrap; justify-content:center; max-width:760px; margin:0 auto;
+  }
+  .city{
+    border:1px solid #4a4636; padding:9px 18px; border-radius:30px; font-size:14px; color:#d8d3c2;
+  }
+
+  /* ===== Form ===== */
+  .form-section{background:var(--concrete-2);}
+  .form-wrap{
+    max-width:560px; margin:0 auto; background:#fff; border-radius:12px;
+    padding:34px 26px; box-shadow:0 10px 30px rgba(0,0,0,0.08);
+  }
+  .form-wrap h3{font-size:21px; margin-bottom:6px; text-align:center;}
+  .form-wrap p.lead{text-align:center; color:#6b644f; font-size:14px; margin-bottom:24px;}
+  label{display:block; font-size:13px; font-weight:700; margin-bottom:6px; color:#3a3628;}
+  .field{margin-bottom:16px;}
+  input,select,textarea{
+    width:100%; padding:13px 14px; border:1px solid #d4cdb6; border-radius:8px;
+    font-family:'Tajawal',sans-serif; font-size:15px; background:#fcfaf4;
+  }
+  textarea{resize:vertical; min-height:80px;}
+  .submit-btn{
+    width:100%; padding:15px; background:var(--rust); color:#fff; border:none; border-radius:8px;
+    font-family:'Almarai',sans-serif; font-weight:700; font-size:16px; cursor:pointer; margin-top:6px;
+  }
+  .submit-btn:hover{background:var(--rust-2);}
+  .form-note{font-size:12px; color:#8a8270; text-align:center; margin-top:12px;}
+
+  /* ===== Footer ===== */
+  footer{background:var(--asphalt); color:#9a9384; text-align:center; padding:30px 20px 110px; font-size:13px;}
+  footer .phone{color:var(--rust-2); font-weight:700; font-family:'Almarai',sans-serif; font-size:18px; display:block; margin-bottom:10px;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+
+<div class="topbar">
+  <span>السعودية – خدمة فورية على مدار الأسبوع</span>
+  <a class="phone" href="tel:0546221965">0546221965</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">⚡ معدات تكسير + ترحيل مخالفات في مكان واحد</span>
+    <h1>معدات تكسير وهدم جاهزة <span>وترحيل مخالفات</span> بسرعة وضمان</h1>
+    <p class="sub">نوفر تأجير وبيع معدات التكسير والهدم بأحدث الموديلات، وفي نفس الوقت فريق متخصص لترحيل وإزالة المخالفات بالرياض وجميع مناطق المملكة — قبل ما الغرامة تكبر.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="tel:0546221965">📞 اتصل الآن: 0546221965</a>
+      <a class="btn btn-outline" href="#form">اطلب عرض سعر</a>
+    </div>
+    <div class="trust-row">
+      <div><b>+10</b>سنوات خبرة</div>
+      <div><b>24/7</b>استجابة سريعة</div>
+      <div><b>كل المناطق</b>تغطية بالمملكة</div>
+    </div>
+  </div>
+</section>
+<span class="crack-divider"></span>
+
+<!-- ===== EQUIPMENT ===== -->
+<section class="section" id="equipment">
+  <div class="section-head">
+    <span class="tag">معدات التكسير والهدم</span>
+    <h2>تأجير وبيع معدات تكسير بحالة جيدة وصيانة مستمرة</h2>
+    <p>سواء احتجت المعدة لمشروع واحد أو لفترة طويلة، نوفرها بالمواصفة المناسبة وبتسليم سريع لموقعك.</p>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <span class="num">01</span>
+      <div class="accent"></div>
+      <h3>تأجير معدات تكسير</h3>
+      <p>هدامات وكسارات هيدروليكية بمختلف الأحجام، تأجير يومي أو لمدة المشروع كامل، مع سائق فني عند الطلب.</p>
+    </div>
+    <div class="card">
+      <span class="num">02</span>
+      <div class="accent"></div>
+      <h3>بيع معدات هدم</h3>
+      <p>معدات مستعملة بحالة ممتازة ومفحوصة، أو معدات جديدة حسب الطلب، مع ضمان وفترة تجربة.</p>
+    </div>
+    <div class="card">
+      <span class="num">03</span>
+      <div class="accent"></div>
+      <h3>تخريم ومعالجة خرسانة</h3>
+      <p>فريق فني لتخريم الخرسانة وتكسيرها بدقة بدون التأثير على المنشآت المجاورة.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VIOLATIONS ===== -->
+<section class="section violations" id="violations">
+  <div class="section-head">
+    <span class="tag">ترحيل وإزالة المخالفات</span>
+    <h2>خلصنا مخالفتك قبل ما تتحول لغرامة أكبر</h2>
+    <p>فريقنا يتعامل مع البلدية ومحاضر المخالفات من البداية للنهاية، وانت بس تتصل.</p>
+  </div>
+  <div class="vio-grid">
+    <ul class="vio-list">
+      <li><span class="check">✓</span> ترحيل مخالفات البناء والتشطيب بشكل معتمد</li>
+      <li><span class="check">✓</span> إزالة المخالفات قبل انتهاء المهلة النظامية</li>
+      <li><span class="check">✓</span> تنسيق مباشر مع الجهات البلدية المختصة</li>
+      <li><span class="check">✓</span> متابعة الحالة لحد ما يتم إغلاق المخالفة رسميًا</li>
+      <li><span class="check">✓</span> أسعار واضحة من أول اتصال، بدون مفاجآت</li>
+    </ul>
+    <div class="stamp-wrap">
+      <div class="stamp"><span>ترحيل<br>سريع<br>ومعتمد</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROCESS ===== -->
+<section class="section" id="process">
+  <div class="section-head">
+    <span class="tag">إزاي بنشتغل</span>
+    <h2>من أول مكالمة لحد إغلاق الملف</h2>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="circle">1</div>
+      <h4>اتصال أو طلب</h4>
+      <p>تتصل أو تبعت طلبك من الفورم</p>
+    </div>
+    <div class="step">
+      <div class="circle">2</div>
+      <h4>معاينة سريعة</h4>
+      <p>نحدد المعدة المناسبة أو نوع المخالفة</p>
+    </div>
+    <div class="step">
+      <div class="circle">3</div>
+      <h4>تنفيذ في الموقع</h4>
+      <p>تسليم المعدة أو بدء إجراءات الترحيل</p>
+    </div>
+    <div class="step">
+      <div class="circle">4</div>
+      <h4>إغلاق الملف</h4>
+      <p>تسليم نهائي أو إغلاق المخالفة رسميًا</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COVERAGE ===== -->
+<section class="section coverage">
+  <div class="section-head">
+    <span class="tag">مناطق التغطية</span>
+    <h2>نخدمك في الرياض وجميع مناطق المملكة</h2>
+  </div>
+  <div class="cities">
+    <span class="city">الرياض</span>
+    <span class="city">جدة</span>
+    <span class="city">الدمام</span>
+    <span class="city">مكة المكرمة</span>
+    <span class="city">المدينة المنورة</span>
+    <span class="city">الخبر</span>
+    <span class="city">القصيم</span>
+    <span class="city">باقي مناطق المملكة</span>
+  </div>
+</section>
+
+<!-- ===== FORM ===== -->
+<section class="section form-section" id="form">
+  <div class="form-wrap">
+    <h3>اطلب عرض سعر الآن</h3>
+    <p class="lead">عبّي بياناتك وفريقنا يتواصل معك في أقرب وقت</p>
+    <form action="tel:0546221965" onsubmit="return false;">
+      <div class="field">
+        <label>الاسم</label>
+        <input type="text" placeholder="اسمك الكامل" required>
+      </div>
+      <div class="field">
+        <label>رقم الجوال</label>
+        <input type="tel" placeholder="05XXXXXXXX" required>
+      </div>
+      <div class="field">
+        <label>الخدمة المطلوبة</label>
+        <select required>
+          <option value="" disabled selected>اختر الخدمة</option>
+          <option>تأجير معدات تكسير</option>
+          <option>بيع معدات تكسير</option>
+          <option>ترحيل وإزالة مخالفة</option>
+          <option>استشارة عامة</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>المدينة</label>
+        <input type="text" placeholder="مثال: الرياض">
+      </div>
+      <div class="field">
+        <label>تفاصيل إضافية (اختياري)</label>
+        <textarea placeholder="اكتب تفاصيل الطلب أو المخالفة"></textarea>
+      </div>
+      <a class="submit-btn" href="tel:0546221965" style="display:block; text-align:center;">📞 إرسال الطلب والاتصال المباشر</a>
+    </form>
+    <p class="form-note">بالضغط على إرسال، هيتم تحويلك للاتصال المباشر بالفريق المختص.</p>
+  </div>
+</section>
+
+<footer>
+  <a class="phone" href="tel:0546221965">0546221965</a>
+  مقاول هدم، تكسير، وترحيل مخالفات — جميع مناطق المملكة العربية السعودية
+</footer>
+
+<div class="stickybar">
+  <a class="sb-call" href="tel:0546221965">📞 اتصل الآن</a>
+  <a class="sb-wa" href="https://wa.me/966546221965" target="_blank">واتساب</a>
+</div>
+
+</body>
+</html>
