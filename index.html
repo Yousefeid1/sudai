@@ -29,6 +29,7 @@
     --steel:#2f4858;
     --steel-2:#3e5d70;
     --ok:#7a8c3a;
+    --err:#b8402f;
     --text-dark:#1a1812;
     --text-light:#f3efe3;
   }
@@ -256,7 +257,15 @@
     font-family:'Almarai',sans-serif; font-weight:700; font-size:16px; cursor:pointer; margin-top:6px;
   }
   .submit-btn:hover{background:var(--rust-2);}
+  .submit-btn:disabled{opacity:0.6; cursor:not-allowed;}
   .form-note{font-size:12px; color:#8a8270; text-align:center; margin-top:12px;}
+  .form-status{
+    display:none; text-align:center; font-size:14px; font-weight:700;
+    padding:12px; border-radius:8px; margin-top:14px; font-family:'Almarai',sans-serif;
+  }
+  .form-status.show{display:block;}
+  .form-status.ok{background:rgba(122,140,58,0.12); color:#5a6a25;}
+  .form-status.err{background:rgba(184,64,47,0.1); color:var(--err);}
 
   /* ===== Footer ===== */
   footer{background:var(--asphalt); color:#9a9384; text-align:center; padding:30px 20px 110px; font-size:13px;}
@@ -417,18 +426,18 @@
   <div class="form-wrap">
     <h3>اطلب عرض سعر الآن</h3>
     <p class="lead">عبّي بياناتك وفريقنا يتواصل معك في أقرب وقت</p>
-    <form action="tel:01009264000" onsubmit="return false;">
+    <form id="leadForm">
       <div class="field">
         <label>الاسم</label>
-        <input type="text" placeholder="اسمك الكامل" required>
+        <input type="text" id="f-name" placeholder="اسمك الكامل" required>
       </div>
       <div class="field">
         <label>رقم الجوال</label>
-        <input type="tel" placeholder="01XXXXXXXXX" required>
+        <input type="tel" id="f-phone" placeholder="01XXXXXXXXX" required>
       </div>
       <div class="field">
         <label>الخدمة المطلوبة</label>
-        <select required>
+        <select id="f-service" required>
           <option value="" disabled selected>اختر الخدمة</option>
           <option>تشطيبات كاملة</option>
           <option>دهانات وديكورات جدران</option>
@@ -441,15 +450,16 @@
       </div>
       <div class="field">
         <label>المدينة</label>
-        <input type="text" placeholder="مثال: القاهرة">
+        <input type="text" id="f-city" placeholder="مثال: القاهرة">
       </div>
       <div class="field">
         <label>تفاصيل إضافية (اختياري)</label>
-        <textarea placeholder="اكتب تفاصيل الطلب أو المساحة المطلوب تشطيبها"></textarea>
+        <textarea id="f-details" placeholder="اكتب تفاصيل الطلب أو المساحة المطلوب تشطيبها"></textarea>
       </div>
-      <a class="submit-btn" href="tel:01009264000" style="display:block; text-align:center;">📞 إرسال الطلب والاتصال المباشر</a>
+      <button type="submit" class="submit-btn" id="f-submit">📩 إرسال الطلب</button>
     </form>
-    <p class="form-note">بالضغط على إرسال، هيتم تحويلك للاتصال المباشر بالفريق المختص.</p>
+    <div class="form-status" id="f-status"></div>
+    <p class="form-note">هيتم إرسال بياناتك مباشرة لفريقنا، وممكن كمان تتصل بينا مباشرة على 01009264000.</p>
   </div>
 </section>
 
@@ -462,6 +472,73 @@
   <a class="sb-call" href="tel:01009264000">📞 اتصل الآن</a>
   <a class="sb-wa" href="https://wa.me/201009264000" target="_blank">واتساب</a>
 </div>
+
+<script>
+(function(){
+  var TG_BOT_TOKEN = "8858108583:AAFdgh6oxNE_GSiDEBUVLZUCt7B1SGyY7AA";
+  var TG_CHAT_ID = "6743555064";
+
+  var form = document.getElementById("leadForm");
+  var statusBox = document.getElementById("f-status");
+  var submitBtn = document.getElementById("f-submit");
+
+  function showStatus(msg, ok){
+    statusBox.textContent = msg;
+    statusBox.className = "form-status show " + (ok ? "ok" : "err");
+  }
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+
+    var name = document.getElementById("f-name").value.trim();
+    var phone = document.getElementById("f-phone").value.trim();
+    var service = document.getElementById("f-service").value;
+    var city = document.getElementById("f-city").value.trim();
+    var details = document.getElementById("f-details").value.trim();
+
+    if(!name || !phone || !service){
+      showStatus("من فضلك عبّي الاسم ورقم الجوال والخدمة المطلوبة.", false);
+      return;
+    }
+
+    var text =
+      "👑 طلب جديد - Touche Royale\n" +
+      "الاسم: " + name + "\n" +
+      "الجوال: " + phone + "\n" +
+      "الخدمة: " + service + "\n" +
+      "المدينة: " + (city || "غير محدد") + "\n" +
+      "تفاصيل: " + (details || "لا يوجد");
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "جارٍ الإرسال...";
+
+    fetch("https://api.telegram.org/bot" + TG_BOT_TOKEN + "/sendMessage", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        chat_id: TG_CHAT_ID,
+        text: text
+      })
+    })
+    .then(function(res){ return res.json(); })
+    .then(function(data){
+      submitBtn.disabled = false;
+      submitBtn.textContent = "📩 إرسال الطلب";
+      if(data.ok){
+        showStatus("تم إرسال طلبك بنجاح، هيتم التواصل معاك قريب ✅", true);
+        form.reset();
+      } else {
+        showStatus("حصل خطأ أثناء الإرسال، اتصل بينا مباشرة على 01009264000.", false);
+      }
+    })
+    .catch(function(){
+      submitBtn.disabled = false;
+      submitBtn.textContent = "📩 إرسال الطلب";
+      showStatus("حصل خطأ في الاتصال، اتصل بينا مباشرة على 01009264000.", false);
+    });
+  });
+})();
+</script>
 
 </body>
 </html>
